@@ -1,0 +1,22 @@
+---Shell script not include this line
+
+var params = {
+    TableName: 'DnaSequenceInfo',
+    KeySchema: [{ AttributeName: 'id', KeyType: 'HASH' }],
+    AttributeDefinitions: [{  AttributeName: 'id', AttributeType: 'S', }],
+    ProvisionedThroughput: { ReadCapacityUnits: 1, WriteCapacityUnits: 1, }
+};
+
+dynamodb.createTable(params, function(err, data) {
+    if (err) ppJson(err);
+    else ppJson(data);
+
+});
+
+
+---AWS cli not include this line
+
+aws dynamodb create-table --table-name DnaSequenceInfo \
+                          --attribute-definitions AttributeName=id,AttributeType=S \
+                          --key-schema AttributeName=id,KeyType=HASH \
+                          --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
