@@ -80,6 +80,9 @@ You can then execute your native executable with: `./target/magneto_recluter-1.0
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
 
+## You can use the docker files 
+src/main/docker DockerFile.jvm in this file you can found all instruction to run the aplication
+
 ## Related Guides
 
 - RESTEasy JAX-RS ([guide](https://quarkus.io/guides/rest-json)): REST endpoint framework implementing JAX-RS and more
