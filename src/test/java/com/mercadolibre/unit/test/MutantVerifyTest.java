@@ -29,7 +29,6 @@ package com.mercadolibre.unit.test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +37,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.mercadolibre.model.ValidationDnaData;
-import com.mercadolibre.mutant.utils.UtilReader;
 import com.mercadolibre.validator.MutantVerification;
 
 import io.quarkus.test.junit.QuarkusTest;
@@ -55,15 +53,11 @@ public class MutantVerifyTest {
 
 	@BeforeEach
 	void init() {
-		try {
-			dnaTrue = Optional.ofNullable(UtilReader.readDnaInfo("resources/Data_mutant_true_test.txt"));
-			dnaFalse = Optional.ofNullable(UtilReader.readDnaInfo("resources/Data_mutant_false_test.txt"));
-			dnaNotValid = Optional.ofNullable(UtilReader.readDnaInfo("resources/Data_mutant_not_valid.txt"));
-			dnaNotSimetrict = Optional.ofNullable(UtilReader.readDnaInfo("resources/Data_mutant_not_simetrict.txt"));
-			verify = new MutantVerification();
-		} catch (NumberFormatException | IOException e) {
-			
-		}
+		dnaTrue = Optional.ofNullable(List.of("ATGCGA", "CAGTGC", "TTATGT","AGAAGG","CCCCTA","TCACTG"));
+		dnaFalse = Optional.ofNullable(List.of("ATGCTA", "CAGTGC", "TTATGT", "AGAAGG", "GCCCTA", "TCACTG"));
+		dnaNotValid = Optional.ofNullable(List.of("ATGCGA","CAPTGC","TTATGH","AGAAGG","CCCCTA","TCACTG"));
+		dnaNotSimetrict = Optional.ofNullable(List.of("ATGCGA","CAGT","TTATGT","AGAAGG","CCCCTA","TCACT"));
+		verify = new MutantVerification();
 		
 	}
 	
