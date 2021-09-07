@@ -38,7 +38,7 @@ public class MutantValidatorService {
 		if (!CollectionUtils.isNullOrEmpty(dnaInfoList)) {
 			stats.setCountMutantDna(dnaInfoList.stream().parallel().filter(fil -> fil.isMutant()).count()) ;
 			stats.setCountHumanDna(dnaInfoList.stream().parallel().filter(fil -> !fil.isMutant()).count());
-			double ratio=stats.getCountHumanDna()!=0?stats.getCountMutantDna()/stats.getCountHumanDna():0;
+			Double ratio=stats.getCountHumanDna()>0?stats.getCountMutantDna().doubleValue()/stats.getCountHumanDna().doubleValue():0;
 			stats.setRatio(ratio);
 		}
 		return Response.ok(stats).build();

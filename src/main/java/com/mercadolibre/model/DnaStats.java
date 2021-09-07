@@ -19,14 +19,14 @@ public class DnaStats {
 	private double ratio;
 	
 	@JsonGetter("count_mutant_dna")
-	public long getCountMutantDna() {
+	public Long getCountMutantDna() {
 		return countMutantDna;
 	}
 	public void setCountMutantDna(long countMutantDna) {
 		this.countMutantDna = countMutantDna;
 	}
 	@JsonGetter("count_human_dna")
-	public long getCountHumanDna() {
+	public Long getCountHumanDna() {
 		return countHumanDna;
 	}
 	public void setCountHumanDna(long countHumanDna) {
